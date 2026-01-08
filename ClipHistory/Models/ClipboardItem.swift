@@ -8,7 +8,7 @@
 import Foundation
 
 struct ClipboardItem {
-    var id : UUID;
+    var id : UUID = UUID();
     var content : String;
-    var dateCreated : Date;
+    var dateCreated : Date = Date()
 }
