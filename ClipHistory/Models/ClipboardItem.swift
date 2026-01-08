@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClipboardItem {
+struct ClipboardItem : Codable {
     var id : UUID = UUID();
     var content : String;
     var dateCreated : Date = Date()
