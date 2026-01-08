@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct ClipboardItem {
+    var id : UUID;
+    var content : String;
+    var dateCreated : Date;
+}
