@@ -11,9 +11,11 @@ import SwiftUI
 @main
 struct ClipHistoryApp: App {
     
+    @State private var clipboard = ClipboardManager()
+
     var body: some Scene {
         MenuBarExtra("ClipHistory", systemImage: "list.bullet.clipboard") {
-                    ClipboardHistoryView(items: ["hello", "hello2", "hello3"])
+            ClipboardHistoryView(items: clipboard.items)
             
         }
         .menuBarExtraStyle(.window)
