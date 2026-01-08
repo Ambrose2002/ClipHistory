@@ -17,7 +17,7 @@ internal import Combine
 
 class ClipboardManager {
     
-    var items: [ClipboardItem] = []
+    var items: [String] = []
     
     var currentText: String = ""
     private var lastChangeCount = NSPasteboard.general.changeCount
@@ -32,15 +32,13 @@ class ClipboardManager {
                 self.lastChangeCount = pb.changeCount
                 let newContent = pb.string(forType: .string) ?? ""
                 
-                let clipItem : ClipboardItem = ClipboardItem(content: newContent)
-                
                 withAnimation {
-                    self.items.insert(clipItem, at: 0)
+                    self.items.insert(newContent, at: 0)
                     if self.items.count > 50 { self.items.removeLast() }
                 }
                 
                 Task {
-                    writeClip(clip: clipItem)
+                    writeClip(clip: newContent)
                 }
                 
             }

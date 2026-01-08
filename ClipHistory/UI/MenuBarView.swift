@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClipboardHistoryView: View {
     
-    var items : [ClipboardItem];
+    var items : [String];
     var body: some View {
         Spacer()
         
@@ -18,13 +18,13 @@ struct ClipboardHistoryView: View {
             
             Divider()
             
-            ForEach(items.prefix(10)) { item in
+            ForEach(items.prefix(10), id: \.self) { item in
                 Button(action: {
                     NSPasteboard.general.clearContents()
-                    NSPasteboard.general.setString(item.content, forType: .string)
+                    NSPasteboard.general.setString(item, forType: .string)
                 })
                 {
-                    Text(item.content)
+                    Text(item)
                         .lineLimit(1)
                         .truncationMode(.tail)
                 }

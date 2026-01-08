@@ -8,12 +8,12 @@
 import Foundation
 
 
-func writeClip(clip: ClipboardItem) {
+func writeClip(clip: String) {
     
     let fileURL = URL.documentsDirectory.appending(path: "clips.json")
     
     do {
-        var current : [ClipboardItem] = loadClips();
+        var current : [String] = loadClips();
         current.append(clip)
         
         let data = try JSONEncoder().encode(current)
@@ -25,7 +25,7 @@ func writeClip(clip: ClipboardItem) {
 }
 
 
-func loadClips() -> [ClipboardItem] {
+func loadClips() -> [String] {
     let fileURL = URL.documentsDirectory.appending(path: "users.json")
     
     // Check if file exists first
@@ -36,7 +36,7 @@ func loadClips() -> [ClipboardItem] {
         let data = try Data(contentsOf: fileURL)
         
         // Decode JSON data back into Swift objects
-        let clips = try JSONDecoder().decode([ClipboardItem].self, from: data)
+        let clips = try JSONDecoder().decode([String].self, from: data)
         return clips
     } catch {
         print("Error loading JSON: \(error)")
