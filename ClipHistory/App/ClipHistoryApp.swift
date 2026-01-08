@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+
 @main
 struct ClipHistoryApp: App {
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("ClipHistory", systemImage: "list.bullet.clipboard") {
+                    ClipboardHistoryView(items: ["hello", "hello2", "hello3"])
+            
         }
+        .menuBarExtraStyle(.window)
     }
 }
