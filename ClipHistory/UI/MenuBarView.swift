@@ -7,18 +7,36 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ClipboardHistoryView: View {
+    
+    var items : [String];
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        Spacer()
+        
+        VStack(alignment: .leading) {
+            Text("Recent Clips")
+            
+            Divider()
+            
+            ForEach(items.prefix(10), id: \.self) { item in
+                Button(action: {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(item, forType: .string)
+                })
+                {
+                    Text(item)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                }
+                .buttonStyle(.plain)
+                
+                Divider()
+                
+            }
+        }.padding(.leading, 8)
     }
 }
 
 #Preview {
-    ContentView()
+
 }
