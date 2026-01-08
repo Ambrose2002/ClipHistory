@@ -33,6 +33,9 @@ class ClipboardManager {
                 let newContent = pb.string(forType: .string) ?? ""
                 
                 withAnimation {
+                    if self.items.contains(newContent) {
+                        self.items.removeAll {$0 == newContent}
+                    }
                     self.items.insert(newContent, at: 0)
                     if self.items.count > 50 { self.items.removeLast() }
                 }
