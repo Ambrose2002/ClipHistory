@@ -51,4 +51,9 @@ class ClipboardManager {
     func refreshClips() {
         self.items = loadClips()
     }
+    
+    func clearAll() {
+        self.items = []
+        clearHistory()
+    }
 }

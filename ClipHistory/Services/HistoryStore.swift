@@ -24,9 +24,22 @@ func writeClip(clip: String) {
     }
 }
 
+func clearHistory() {
+    let fileURL = URL.documentsDirectory.appending(path: "clips.json")
+    
+    do {
+        let current : [String] = [];
+        
+        let data = try JSONEncoder().encode(current)
+        
+        try data.write(to: fileURL, options: [.atomic, .completeFileProtection])
+    } catch {
+        print("Error saving JSON: \(error)")
+    }
+}
 
 func loadClips() -> [String] {
-    let fileURL = URL.documentsDirectory.appending(path: "users.json")
+    let fileURL = URL.documentsDirectory.appending(path: "clips.json")
     
     // Check if file exists first
     guard FileManager.default.fileExists(atPath: fileURL.path) else { return [] }

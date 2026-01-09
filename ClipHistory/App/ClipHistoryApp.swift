@@ -15,7 +15,7 @@ struct ClipHistoryApp: App {
 
     var body: some Scene {
         MenuBarExtra("ClipHistory", systemImage: "list.bullet.clipboard") {
-            ClipboardHistoryView(items: clipboard.items)
+            ClipboardHistoryView(manager: clipboard, items: clipboard.items)
             
         }
         .menuBarExtraStyle(.window)

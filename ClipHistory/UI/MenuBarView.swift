@@ -9,12 +9,30 @@ import SwiftUI
 
 struct ClipboardHistoryView: View {
     
+    var manager: ClipboardManager
     var items : [String];
+    
     var body: some View {
         Spacer()
         
         VStack(alignment: .leading) {
-            Text("Recent Clips")
+            
+            HStack() {
+                Text("Recent Clips")
+                
+                Spacer()
+                
+                Button(action: {
+                    manager.clearAll()
+                }) {
+                    Text("Clear History")
+                }
+                
+                Spacer()
+                
+                
+            }
+            
             
             Divider()
             
@@ -36,3 +54,4 @@ struct ClipboardHistoryView: View {
         }.padding(.leading, 8)
     }
 }
+
