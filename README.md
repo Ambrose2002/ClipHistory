@@ -45,7 +45,6 @@ A lightweight macOS menu bar application that keeps track of your clipboard hist
 
 The app is built with SwiftUI and consists of:
 
-- **Models** - `ClipboardItem` for representing clipboard entries
 - **Services** - `ClipboardService` for clipboard monitoring and `HistoryStore` for persistence
 - **UI** - Menu bar view and clipboard history display
 
