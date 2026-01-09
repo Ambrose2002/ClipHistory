@@ -30,7 +30,13 @@ struct ClipboardHistoryView: View {
                 
                 Spacer()
                 
+                Button(action: {
+                    NSApplication.shared.terminate(nil)
+                }) {
+                    Text("Quit")
+                }
                 
+                Spacer()
             }
             
             
